@@ -2,6 +2,8 @@
 
 Advent of Code 2023 daily programming challenge, christmas themed.
 
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+
 ## Version
 
 Current version is 0.1.0 and was set according to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
