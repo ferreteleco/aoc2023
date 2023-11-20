@@ -1,0 +1,3 @@
+[bandit]
+exclude = tests,.venv,docs
+targets = aoc2023

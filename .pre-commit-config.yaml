@@ -45,7 +45,6 @@ repos:
       hooks:
           - id: flake8
             name: flake8
-            args: ["--ignore=E501,W503", "--extend-ignore=E203"]
             description: Uses flake8 to check code style.
 
     - repo: https://github.com/PyCQA/bandit
@@ -54,6 +53,8 @@ repos:
           - id: bandit
             name: bandit
             description: Uses bandit to check for security issues in code.
+            args: ["-c", "bandit.toml"]
+            additional_dependencies: ["bandit[toml]"]
 
     - repo: https://github.com/jendrikseipp/vulture
       rev: v2.10
@@ -61,7 +62,6 @@ repos:
           - id: vulture
             name: vulture
             description: Find unused Python code.
-            args: ["--min-confidence", "90", "--exclude", "*env*", "docs/", "."]
 
     - repo: https://github.com/pycqa/isort
       rev: 5.12.0
