@@ -1,0 +1,29 @@
+name: Task
+description: Add an issue for a new Task, covering new feature / idea for this project (or a maintenance one)
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please be sure to include as much details and indications as possible (and applicable)!
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: What type of Task are you filling?
+      multiple: false
+      options:
+        - New Feature
+        - Maintenance
+        - Improvement
+        - Idea
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Description
+      description: Describe what do you have in your mind.
+      placeholder: Implement a new awesome feature that makes coffee! or Add some tests!
+    validations:
+      required: true
