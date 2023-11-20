@@ -53,8 +53,6 @@ repos:
           - id: bandit
             name: bandit
             description: Uses bandit to check for security issues in code.
-            args: ["-c", "bandit.toml"]
-            additional_dependencies: ["bandit[toml]"]
 
     - repo: https://github.com/jendrikseipp/vulture
       rev: v2.10
