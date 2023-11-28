@@ -3,8 +3,10 @@
 Advent of Code 2023 daily programming challenge, christmas themed.
 
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+[![Flake8 Status](./reports/badges/flake8-badge.svg)](./reports/flake8/index.html)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![Tests Status](./reports/badges/junit-tests-badge.svg)](./reports/junit/html-test-report.html)
 
 ## Version
 

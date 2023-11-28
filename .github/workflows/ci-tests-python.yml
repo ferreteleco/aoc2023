@@ -7,13 +7,14 @@ env:
   ##############################################################################
   # Target python version intended to use to run tests into. Defaults to 3.10.2
   ##############################################################################
-  TARGET_PYTHON_VERSION:  3.10.2
+  TARGET_PYTHON_VERSION:  3.10.13
   ##############################################################################
   ##############################################################################
   # Target folder where tests reside. Defaults to "tests"
   ##############################################################################
   TESTS_DIRECTORY: tests
   ##############################################################################
+  SRC_DIR: aoc2023
 
 # BRANCH-AND-TRIGGERS #
 on:
@@ -55,13 +56,16 @@ jobs:
         id: tests-run
         working-directory: .
         run: |
-          poetry run python -m pytest ${{ env.TESTS_DIRECTORY }} --doctest-modules --junit-xml=junit/ci-result-junit.xml
+          poetry run python -m pytest ${{ env.TESTS_DIRECTORY }} --doctest-modules --junit-xml=reports/junit/junit-test-report.xml --html=reports/junit/html-test-report.html
+          poetry run genbadge tests -i reports/junit/junit-test-report.xml -o reports/badges/junit-tests-badge.svg
+          poetry run flake8 ${{ env.SRC_DIR }} --exit-zero --format=html --htmldir ./reports/flake8 --statistics --tee --output-file reports/flake8/flake8stats.txt
+          poetry run genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge.svg
 
       - name: Publish Unit Test Results
         id: tests-publish
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: junit/ci-result-junit.xml
+          files: reports/junit/junit-test-report.xml
           action_fail: true
           action_fail_on_inconclusive: true
