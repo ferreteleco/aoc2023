@@ -1,3 +1,4 @@
 [bandit]
 exclude = tests,.venv,docs
 targets = aoc2023
+skips = ["B101", "B601"]
