@@ -16,7 +16,7 @@ Project's version should be updated, when applicable:
 
 - In this very file.
 - In the changelog.
-- In the __init__.py file inside aoc2023
+- In the \_\_init\_\_.py file inside aoc2023
 - In the pyproject.toml file.
 
 ## Prerequisites
@@ -46,6 +46,36 @@ In order to generate a .whl file to distribute the project, simply run:
 
 ```bash
 poetry build
+```
+
+## Testing
+
+In order to run project tests, simply run:
+
+```bash
+poetry run pytest tests --doctest-modules
+```
+
+In order to generate XML and HTML reports, run this instead:
+
+```bash
+poetry run pytest tests --doctest-modules --junit-xml=reports/junit/junit-test-report.xml --html=reports/junit/html-test-report.html
+```
+
+##  Badges generation
+
+To generate project badges, simply ## Building
+
+- **Unit Tests**
+
+```bash
+genbadge tests -i reports/junit/junit-test-report.xml -o reports/badges/junit-tests-badge.svg
+```
+
+- **Flake8**
+
+```bash
+genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge.svg
 ```
 
 ## License
