@@ -50,8 +50,6 @@ poetry build
 
 ## License
 
-Developed by Centro Tecnolóxico de Telecomunicacións de Galicia (GRADIANT) (c) 2023
-
 See license file for more information.
 
 ## Authors
