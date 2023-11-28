@@ -57,9 +57,9 @@ jobs:
         working-directory: .
         run: |
           poetry run python -m pytest ${{ env.TESTS_DIRECTORY }} --doctest-modules --junit-xml=reports/junit/junit-test-report.xml --html=reports/junit/html-test-report.html
-          poetry run python -m genbadge tests -i reports/junit/junit-test-report.xml -o reports/badges/junit-tests-badge.svg
-          poetry run python -m flake8 ${{ env.SRC_DIR }} --exit-zero --format=html --htmldir ./reports/flake8 --statistics --tee --output-file reports/flake8/flake8stats.txt
-          poetry run python -m genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge.svg
+          poetry run genbadge tests -i reports/junit/junit-test-report.xml -o reports/badges/junit-tests-badge.svg
+          poetry run flake8 ${{ env.SRC_DIR }} --exit-zero --format=html --htmldir ./reports/flake8 --statistics --tee --output-file reports/flake8/flake8stats.txt
+          poetry run genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge.svg
 
       - name: Publish Unit Test Results
         id: tests-publish
