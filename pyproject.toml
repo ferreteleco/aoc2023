@@ -7,10 +7,13 @@ readme = "README.md"
 license="Apache-2"
 packages = [{include = "aoc2023"}]
 
+[tool.poetry.scripts]
+aoc2023 = "aoc2023:app"
+
 [tool.poetry.dependencies]
 loguru = "^0.6.0"
 python = "^3.10.2"
-typer = "^0.9.0"
+typer = {extras = ["all"], version = "^0.9.0"}
 
 [tool.poetry.group.dev.dependencies]
 bandit = {extras = ["toml"], version = "^1.7.5"}
