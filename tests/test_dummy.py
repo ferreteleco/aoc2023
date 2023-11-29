@@ -3,11 +3,11 @@ test_dummy.py
 
 Project: Advent of Code 2023
 
-Maintainer Andrés Ferreiro González (aferreiro@gradiant.org)
-Created @ 28/11/23 17:38:28.862000
+Maintainer Andrés Ferreiro González (andres.ferreiro.glez@gmail.com)
+Created @ 29/11/23 10:58:37.516000
 
-Copyright (c) 2023 Centro Tecnolóxico de Telecomunicacións de Galicia (GRADIANT)
-All Rights Reserved
+Copyright (c) 2023 Andrés Ferreiro González
+See project license for more info
 """
 
 
