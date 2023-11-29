@@ -1,6 +1,6 @@
 # Advent of Code 2023 README
 
-Advent of Code 2023 daily programming challenge, christmas themed.
+Advent of Code 2023 daily programming challenge, christmas themed. Website [here](https://adventofcode.com/).
 
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
 [![Flake8 Status](./reports/badges/flake8-badge.svg)](./reports/flake8/index.html)
