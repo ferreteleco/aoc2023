@@ -57,11 +57,8 @@ jobs:
         working-directory: .
         run: |
           poetry run python -m pytest ${{ env.TESTS_DIRECTORY }} --doctest-modules --junit-xml=reports/junit/junit-test-report.xml --html=reports/junit/html-test-report.html
-          poetry run genbadge tests -i reports/junit/junit-test-report.xml -o reports/badges/junit-tests-badge.svg
-          poetry run flake8 ${{ env.SRC_DIR }} --exit-zero --format=html --htmldir ./reports/flake8 --statistics --tee --output-file reports/flake8/flake8stats.txt
-          poetry run genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge.svg
 
-      - name: Publish Unit Test Results
+      - name: Unit Test Results
         id: tests-publish
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
@@ -69,3 +66,18 @@ jobs:
           files: reports/junit/junit-test-report.xml
           action_fail: true
           action_fail_on_inconclusive: true
+
+      - name: Generate Badges (coverage)
+        id: badge-gen-coverage
+        if: success()
+        working-directory: .
+        run: |
+          poetry run genbadge tests -i reports/junit/junit-test-report.xml -o reports/badges/junit-tests-badge.svg
+
+      - name: Generate Badges (flake8)
+        id: badge-gen-flake8
+        if: always()
+        working-directory: .
+        run: |
+          poetry run flake8 ${{ env.SRC_DIR }} --exit-zero --format=html --htmldir ./reports/flake8 --statistics --tee --output-file reports/flake8/flake8stats.txt
+          poetry run genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge.svg
