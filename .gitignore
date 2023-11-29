@@ -1,6 +1,5 @@
 # VSCode
-.vscode
-!.vscode/matlab-custom.code-snippets
+.vscode/*
 !.vscode/common.code-snippets
 /out
 arepl.py
