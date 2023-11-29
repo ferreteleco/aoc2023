@@ -11,3 +11,5 @@ See project license for more info
 """
 
 __version__ = "0.1.0"
+
+from aoc2023.app import app  # noqa: F401
