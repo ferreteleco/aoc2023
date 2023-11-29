@@ -66,6 +66,7 @@ repos:
       rev: 5.12.0
       hooks:
           - id: isort
+            args: ["--sp", ".isort.cfg"]
             description: Uses isort to automatically sort imports in code.
 
     - repo: local
