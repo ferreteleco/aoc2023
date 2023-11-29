@@ -1,0 +1,39 @@
+{
+  "TODO": {
+    "prefix": "todo",
+    "body": [
+      "${LINE_COMMENT} TODO ${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}-andresoferreiro) ${1:message}",
+    ],
+    "description": "Add TODO",
+  },
+  "FIXME": {
+    "prefix": "fixme",
+    "body": [
+      "${LINE_COMMENT} FIXME ${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}-andresoferreiro) ${1:message}",
+    ],
+    "description": "Add FIXME",
+  },
+  "NOTE": {
+    "prefix": "note",
+    "body": [
+      "${LINE_COMMENT} NOTE ${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}-andresoferreiro) ${1:message}",
+    ],
+    "description": "Add NOTE",
+  },
+  "BUG": {
+    "prefix": "bug",
+    "body": [
+      "${LINE_COMMENT} BUG ${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}-andresoferreiro) ${1:message}",
+    ],
+    "description": "Add BUG",
+  },
+  "IMNO": {
+    "prefix": "imno",
+    "body": [
+      "${BLOCK_COMMENT_START} - Impl. Notes (${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}-andresoferreiro)) ${1:imno-title}",
+      "${2: impl.notes}",
+      "${BLOCK_COMMENT_END}",
+    ],
+    "description": "Add Impl. Notes",
+  }
+}
