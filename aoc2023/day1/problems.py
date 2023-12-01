@@ -40,7 +40,8 @@ def compute_calibration_numbers(
         - On each line, the calibration value can be found by combining the first digit and the last
         digit (in that order) to form a single two-digit number.
     Mode "alpha":
-        - Some of the digits are actually spelled out with letters: one, two, three, four, five, six, seven, eight, and nine also count as valid "digits".
+        - Some of the digits are actually spelled out with letters: one, two, three, four, five,
+        six, seven, eight, and nine also count as valid "digits".
 
     The additional checksum is simply the sum of all calibration values.
 
