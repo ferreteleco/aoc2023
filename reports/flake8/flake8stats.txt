@@ -1,2 +1,0 @@
-[1maoc2023/day1/problems.py[m[36m:[m43[36m:[m155[36m:[m [1m[31mB950[m line too long (154 > 100 characters)
-1     B950 line too long (154 > 100 characters)

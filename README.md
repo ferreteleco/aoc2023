@@ -101,6 +101,8 @@ genbadge flake8 -i reports/flake8/flake8stats.txt -o reports/badges/flake8-badge
 genbadge coverage -i reports/coverage/cov.xml -o reports/badges/cov-badge.svg
 ```
 
+An utility script, called *gen-badges.sh* has been provided in order to generate them.
+
 ## License
 
 See license file for more information.
