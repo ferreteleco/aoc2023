@@ -17,6 +17,8 @@ from rich import print as pprint
 from typer import Argument, Option, Typer
 from typing_extensions import Annotated
 
+from aoc2023.common.file_load import load_input_file
+from aoc2023.day1.problems import compute_calibration_numbers
 from aoc2023.utils.logging_utils import CustomizedLogger, LogConfig, LogLevel
 from aoc2023.utils.timing_utils import gen_utc_aware_datetime
 
@@ -79,14 +81,31 @@ def day1(
             exists=True,
             help="Input data file for the problem",
         ),
-    ]
+    ],
+    part: Annotated[
+        int,
+        Option(
+            "--part",
+            "-p",
+            min=1,
+            max=2,
+            help="Select the problem part you want to solve",
+        ),
+    ] = 1,
 ) -> None:
-    """Day one problem interface.
-
-    Args:
-        file (Path): File to be loaded.
-    """
+    """Day one problem interface."""
 
     pprint("[blue]1. Day 1 activity command\n")
     LOG.info("Beginning Day 1 activity!")
-    print(f"Day 1 input file is in: {file}")
+    print(f"\tDay 1 input file is in: {file}")
+
+    lines_to_process = load_input_file(file)
+
+    checksum = -1
+    match part:
+        case 1:
+            __, checksum = compute_calibration_numbers(lines_to_process, "digits")
+        case 2:
+            __, checksum = compute_calibration_numbers(lines_to_process, "alpha")
+
+    pprint(f"\t[bold green]Calibration checksum is {checksum}\n")
