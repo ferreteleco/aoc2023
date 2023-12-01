@@ -1,0 +1,17 @@
+[run]
+branch = True
+
+omit =
+      aoc2023/utils/*
+      aoc2023/app.py
+
+data_file = reports/coverage/.coverage
+
+[html]
+directory = reports/coverage/html
+
+[xml]
+output = reports/coverage/cov.xml
+
+[lcov]
+output = reports/coverage/cov.lcov
