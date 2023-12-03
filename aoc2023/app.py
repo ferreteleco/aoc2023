@@ -19,6 +19,11 @@ from typing_extensions import Annotated
 
 from aoc2023.common.file_load import load_input_file
 from aoc2023.day1.problems import compute_calibration_numbers
+from aoc2023.day2.problems import (
+    check_posible_games,
+    compute_min_values_per_game,
+    compute_sum_of_powers,
+)
 from aoc2023.utils.logging_utils import CustomizedLogger, LogConfig, LogLevel
 from aoc2023.utils.timing_utils import gen_utc_aware_datetime
 
@@ -95,7 +100,7 @@ def day1(
 ) -> None:
     """Day one problems interface."""
 
-    pprint("[blue]1. Day 1 activity command\n")
+    pprint("[blue]- Day 1 activity command\n")
     LOG.info("Beginning Day 1 activity!")
     print(f"\tDay 1 input file is in: {file}")
 
@@ -109,3 +114,53 @@ def day1(
             __, checksum = compute_calibration_numbers(lines_to_process, "alpha")
 
     pprint(f"\t[bold green]Calibration checksum is {checksum}\n")
+
+
+@app.command()
+def day2(
+    file: Annotated[
+        Path,
+        Argument(
+            ...,
+            file_okay=True,
+            dir_okay=False,
+            resolve_path=True,
+            exists=True,
+            help="Input data file for the problem",
+        ),
+    ],
+    max_values: Annotated[
+        tuple[int, int, int],
+        Option(
+            "--max-values", help="Number of cubes of each type in the bag for the game"
+        ),
+    ] = (12, 13, 14),
+    part: Annotated[
+        int,
+        Option(
+            "--part",
+            "-p",
+            min=1,
+            max=2,
+            help="Select the problem part you want to solve",
+        ),
+    ] = 1,
+) -> None:
+    """Day two problems interface."""
+
+    pprint("[blue]- Day 2 activity command\n")
+    LOG.info("Beginning Day 1 activity!")
+    print(f"\tDay 2 input file is in: {file}")
+
+    lines_to_process = load_input_file(file)
+
+    checksum = -1
+    match part:
+        case 1:
+            __, checksum = check_posible_games(lines_to_process, max_values)
+            pprint(f"\t[bold green]Posible games checksum is {checksum}\n")
+
+        case 2:
+            min_values_per_game = compute_min_values_per_game(lines_to_process)
+            checksum = compute_sum_of_powers(min_values_per_game)
+            pprint(f"\t[bold green]Min posible values checksum is {checksum}\n")
