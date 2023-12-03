@@ -1,5 +1,5 @@
 """
-test_day_1_solution.py
+test_day_1.py
 
 Project: Advent of Code 2023
 
@@ -11,7 +11,7 @@ See project license for more info
 """
 
 
-from aoc2023.day1.problems import compute_calibration_numbers
+from aoc2023.problems.day_1 import compute_calibration_numbers
 
 
 def test_day_1_calibration_report() -> None:

@@ -18,8 +18,8 @@ from typer import Argument, Option, Typer
 from typing_extensions import Annotated
 
 from aoc2023.common.file_load import load_input_file
-from aoc2023.day1.problems import compute_calibration_numbers
-from aoc2023.day2.problems import (
+from aoc2023.problems.day_1 import compute_calibration_numbers
+from aoc2023.problems.day_2 import (
     check_posible_games,
     compute_min_values_per_game,
     compute_sum_of_powers,
