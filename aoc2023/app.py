@@ -93,7 +93,7 @@ def day1(
         ),
     ] = 1,
 ) -> None:
-    """Day one problem interface."""
+    """Day one problems interface."""
 
     pprint("[blue]1. Day 1 activity command\n")
     LOG.info("Beginning Day 1 activity!")
