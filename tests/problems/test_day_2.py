@@ -1,5 +1,5 @@
 """
-test_day_2_solution.py
+test_day_2.py
 
 Project: Advent of Code 2023
 
@@ -11,7 +11,7 @@ See project license for more info
 """
 
 
-from aoc2023.day2.problems import (
+from aoc2023.problems.day_2 import (
     check_posible_games,
     compute_min_values_per_game,
     compute_sum_of_powers,

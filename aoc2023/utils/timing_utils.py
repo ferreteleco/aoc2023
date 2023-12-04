@@ -13,8 +13,11 @@ See project license for more info
 from __future__ import annotations
 
 from datetime import datetime
+from time import perf_counter
 
+from loguru import logger as LOG
 from pytz import timezone, utc
+from rich import print as pprint
 
 
 def gen_utc_aware_datetime(tz_name: str, timestamp: (float | None) = None) -> datetime:
@@ -38,3 +41,38 @@ def gen_utc_aware_datetime(tz_name: str, timestamp: (float | None) = None) -> da
         if timestamp
         else tz.normalize(tz.localize(datetime.now())).astimezone(utc)
     )
+
+
+def perf_timer(decorator_name: str | None = None):
+    """Decorator to time a function.
+
+    Args:
+        decorator_name (str | None, optional): Optional decorator name. Defaults to None (function
+        name).
+    """
+
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+
+            if decorator_name:
+                name = decorator_name
+            else:
+                name = func.__name__
+
+            try:
+                start = perf_counter()
+                result = func(*args, **kwargs)
+                delta = (perf_counter() - start) * 1000
+
+                msg = f"Finished {name} in {delta:.4f} ms"
+                pprint(f"[bold yellow]{msg}\n")
+                LOG.debug(msg)
+
+            except Exception as e:  # pylint: disable=broad-exception-caught
+                LOG.exception("Exception when solving {}: {}", name, e)
+            else:
+                return result
+
+        return wrapper
+
+    return decorator

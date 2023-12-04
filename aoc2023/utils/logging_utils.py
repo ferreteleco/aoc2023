@@ -58,7 +58,9 @@ class LogConfig(BaseModel):
     log_conf_backtrace: bool = False
     log_conf_enqueue: bool = False
     log_conf_colorize: bool = False
-    log_conf_format: str = "{time:YYYY-MM-DD HH:mm:ss.SSS zz} | {level: <8} | {name}:{function}:{line} - {message}"  # noqa: B950
+    log_conf_format: str = (
+        "{time} | {level: <8} | {name}:{function}:{line} - {message}"  # noqa: B950
+    )
 
     @validator("log_conf_level_stdout", "log_conf_level_file")
     def sanitize_log_levels(cls, value):  # pylint: disable=no-self-argument
