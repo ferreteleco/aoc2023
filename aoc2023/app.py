@@ -24,6 +24,13 @@ from aoc2023.problems.day_2 import (
     compute_min_values_per_game,
     compute_sum_of_powers,
 )
+from aoc2023.problems.day_3 import (
+    compute_gear_ratios,
+    compute_parts_sum,
+    find_gears,
+    find_part_numbers,
+    parse_lines,
+)
 from aoc2023.utils.logging_utils import CustomizedLogger, LogConfig, LogLevel
 from aoc2023.utils.timing_utils import gen_utc_aware_datetime
 
@@ -164,3 +171,49 @@ def day2(
             min_values_per_game = compute_min_values_per_game(lines_to_process)
             checksum = compute_sum_of_powers(min_values_per_game)
             pprint(f"\t[bold green]Min posible values checksum is {checksum}\n")
+
+
+@app.command()
+def day3(
+    file: Annotated[
+        Path,
+        Argument(
+            ...,
+            file_okay=True,
+            dir_okay=False,
+            resolve_path=True,
+            exists=True,
+            help="Input data file for the problem",
+        ),
+    ],
+    part: Annotated[
+        int,
+        Option(
+            "--part",
+            "-p",
+            min=1,
+            max=2,
+            help="Select the problem part you want to solve",
+        ),
+    ] = 1,
+) -> None:
+    """Day one problems interface."""
+
+    pprint("[blue]- Day 3 activity command\n")
+    LOG.info("Beginning Day 3 activity!")
+    print(f"\tDay 3 input file is in: {file}")
+
+    lines_to_process = load_input_file(file)
+
+    checksum = -1
+    match part:
+        case 1:
+            part_numbers = find_part_numbers(lines_to_process)
+            checksum = compute_parts_sum(part_numbers)
+            pprint(f"\t[bold green]Part numbers checksum is {checksum}\n")
+        case 2:
+            parts, symbols = parse_lines(lines_to_process)
+            gears = find_gears(parts, symbols)
+            computed_gear_ratios = compute_gear_ratios(gears)
+            checksum = sum(computed_gear_ratios)
+            pprint(f"\t[bold green]Gear ratios checksum is {checksum}\n")
