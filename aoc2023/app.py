@@ -31,6 +31,7 @@ from aoc2023.problems.day_3 import (
     find_part_numbers,
     parse_lines,
 )
+from aoc2023.problems.day_4 import solve_part_1, solve_part_2
 from aoc2023.utils.logging_utils import CustomizedLogger, LogConfig, LogLevel
 from aoc2023.utils.timing_utils import gen_utc_aware_datetime
 
@@ -161,7 +162,6 @@ def day2(
 
     lines_to_process = load_input_file(file)
 
-    checksum = -1
     match part:
         case 1:
             __, checksum = check_posible_games(lines_to_process, max_values)
@@ -205,7 +205,6 @@ def day3(
 
     lines_to_process = load_input_file(file)
 
-    checksum = -1
     match part:
         case 1:
             part_numbers = find_part_numbers(lines_to_process)
@@ -217,3 +216,44 @@ def day3(
             computed_gear_ratios = compute_gear_ratios(gears)
             checksum = sum(computed_gear_ratios)
             pprint(f"\t[bold green]Gear ratios checksum is {checksum}\n")
+
+
+@app.command()
+def day4(
+    file: Annotated[
+        Path,
+        Argument(
+            ...,
+            file_okay=True,
+            dir_okay=False,
+            resolve_path=True,
+            exists=True,
+            help="Input data file for the problem",
+        ),
+    ],
+    part: Annotated[
+        int,
+        Option(
+            "--part",
+            "-p",
+            min=1,
+            max=2,
+            help="Select the problem part you want to solve",
+        ),
+    ] = 1,
+) -> None:
+    """Day one problems interface."""
+
+    pprint("[blue]- Day 4 activity command\n")
+    LOG.info("Beginning Day 4 activity!")
+    print(f"\tDay 4 input file is in: {file}")
+
+    lines_to_process = load_input_file(file)
+
+    match part:
+        case 1:
+            points = solve_part_1(lines_to_process)
+            pprint(f"\t[bold green]Total points are {points}\n")
+        case 2:
+            no_cards = solve_part_2(lines_to_process)
+            pprint(f"\t[bold green]Final number of cards is {no_cards}\n")
