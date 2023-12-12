@@ -31,7 +31,10 @@ from aoc2023.problems.day_3 import (
     find_part_numbers,
     parse_lines,
 )
-from aoc2023.problems.day_4 import solve_part_1, solve_part_2
+from aoc2023.problems.day_4 import solve_part_1 as d4_solve_part_1
+from aoc2023.problems.day_4 import solve_part_2 as d4_solve_part_2
+from aoc2023.problems.day_5 import solve_part_1 as d5_solve_part_1
+from aoc2023.problems.day_5 import solve_part_2 as d5_solve_part_2
 from aoc2023.utils.logging_utils import CustomizedLogger, LogConfig, LogLevel
 from aoc2023.utils.timing_utils import gen_utc_aware_datetime
 
@@ -197,7 +200,7 @@ def day3(
         ),
     ] = 1,
 ) -> None:
-    """Day one problems interface."""
+    """Day three problems interface."""
 
     pprint("[blue]- Day 3 activity command\n")
     LOG.info("Beginning Day 3 activity!")
@@ -242,7 +245,7 @@ def day4(
         ),
     ] = 1,
 ) -> None:
-    """Day one problems interface."""
+    """Day four problems interface."""
 
     pprint("[blue]- Day 4 activity command\n")
     LOG.info("Beginning Day 4 activity!")
@@ -252,8 +255,49 @@ def day4(
 
     match part:
         case 1:
-            points = solve_part_1(lines_to_process)
+            points = d4_solve_part_1(lines_to_process)
             pprint(f"\t[bold green]Total points are {points}\n")
         case 2:
-            no_cards = solve_part_2(lines_to_process)
+            no_cards = d4_solve_part_2(lines_to_process)
             pprint(f"\t[bold green]Final number of cards is {no_cards}\n")
+
+
+@app.command()
+def day5(
+    file: Annotated[
+        Path,
+        Argument(
+            ...,
+            file_okay=True,
+            dir_okay=False,
+            resolve_path=True,
+            exists=True,
+            help="Input data file for the problem",
+        ),
+    ],
+    part: Annotated[
+        int,
+        Option(
+            "--part",
+            "-p",
+            min=1,
+            max=2,
+            help="Select the problem part you want to solve",
+        ),
+    ] = 1,
+) -> None:
+    """Day five problems interface."""
+
+    pprint("[blue]- Day 5 activity command\n")
+    LOG.info("Beginning Day 5 activity!")
+    print(f"\tDay 5 input file is in: {file}")
+
+    lines_to_process = load_input_file(file)
+    loc = -1
+    match part:
+        case 1:
+            loc = d5_solve_part_1(lines_to_process)
+            pprint(f"\t[bold green]Lowest location for initial seeds is {loc}\n")
+        case 2:
+            loc = d5_solve_part_2(lines_to_process)
+    pprint(f"\t[bold green]Lowest location for initial seeds is {loc}\n")
