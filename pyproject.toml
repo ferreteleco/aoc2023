@@ -21,7 +21,7 @@ regex = "^2023.10.3"
 
 [tool.poetry.group.dev.dependencies]
 bandit = {extras = ["toml"], version = "^1.7.5"}
-black = "^22.6.0"
+black = "^24.3.0"
 coverage = "^7.2.3"
 flake8 = "^6.0.0"
 hypothesis = "^6.72.4"
